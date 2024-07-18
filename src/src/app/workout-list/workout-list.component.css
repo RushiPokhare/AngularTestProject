@@ -1,0 +1,28 @@
+div {
+    margin-top: 20px;
+  }
+  
+  input, select {
+    margin-bottom: 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  button {
+    margin-right: 5px;
+  }
+  

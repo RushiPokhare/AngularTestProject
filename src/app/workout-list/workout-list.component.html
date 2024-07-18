@@ -1,0 +1,34 @@
+<div class="flex justify-between items-center mb-5">
+  <input type="text" placeholder="Search by name" [(ngModel)]="searchName" (ngModelChange)="updateFilteredWorkouts()" class="p-2 border border-gray-300 rounded-md w-1/2 box-border">
+  <select [(ngModel)]="filterType" (ngModelChange)="updateFilteredWorkouts()" class="p-2 border border-gray-300 rounded-md w-1/2 box-border">
+    <option value="">All</option>
+    <option *ngFor="let type of workoutTypes" [value]="type">{{ type }}</option>
+  </select>
+</div>
+
+<table class="w-full border-collapse mt-2.5">
+  <thead>
+    <tr>
+      <th class="border border-gray-300 p-3 text-left bg-gray-200 font-bold">Name</th>
+      <th class="border border-gray-300 p-3 text-left bg-gray-200 font-bold">Workouts</th>
+      <th class="border border-gray-300 p-3 text-left bg-gray-200 font-bold">Number of Workouts</th>
+      <th class="border border-gray-300 p-3 text-left bg-gray-200 font-bold">Total Workout Minutes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filteredWorkouts">
+      <td class="border border-gray-300 p-3 text-left">{{ user.name }}</td>
+      <td class="border border-gray-300 p-3 text-left">{{ user.workouts.join(', ') }}</td>
+      <td class="border border-gray-300 p-3 text-left">{{ user.workoutCount }}</td>
+      <td class="border border-gray-300 p-3 text-left">{{ user.totalMinutes }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="flex justify-center items-center mt-5">
+  <button (click)="setPage(1)" [disabled]="currentPage === 1" class="p-2 mx-1 bg-blue-500 text-white rounded-md cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed">First</button>
+  <button (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1" class="p-2 mx-1 bg-blue-500 text-white rounded-md cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed">Previous</button>
+  <span class="mx-2 font-bold">Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="setPage(currentPage + 1)" [disabled]="currentPage === totalPages" class="p-2 mx-1 bg-blue-500 text-white rounded-md cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed">Next</button>
+  <button (click)="setPage(totalPages)" [disabled]="currentPage === totalPages" class="p-2 mx-1 bg-blue-500 text-white rounded-md cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed">Last</button>
+</div>

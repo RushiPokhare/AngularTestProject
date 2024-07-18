@@ -1,0 +1,14 @@
+div {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+  }
+  
+  input, select, button {
+    margin-bottom: 10px;
+  }
+  

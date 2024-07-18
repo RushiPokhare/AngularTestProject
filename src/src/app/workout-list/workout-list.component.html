@@ -1,0 +1,34 @@
+<div>
+  <input type="text" placeholder="Search by name" [(ngModel)]="searchName" (ngModelChange)="updateFilteredWorkouts()">
+  <select [(ngModel)]="filterType" (ngModelChange)="updateFilteredWorkouts()">
+    <option value="">All</option>
+    <option *ngFor="let type of workoutTypes" [value]="type">{{ type }}</option>
+  </select>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Workouts</th>
+        <th>Number of Workouts</th>
+        <th>Total Workout Minutes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filteredWorkouts">
+        <td>{{ user.name }}</td>
+        <td>{{ user.workouts.join(', ') }}</td>
+        <td>{{ user.workoutCount }}</td>
+        <td>{{ user.totalMinutes }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <button (click)="setPage(1)" [disabled]="currentPage === 1">First</button>
+    <button (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="setPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    <button (click)="setPage(totalPages)" [disabled]="currentPage === totalPages">Last</button>
+  </div>
+</div>
